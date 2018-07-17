@@ -121,7 +121,7 @@ DB.close(conn);
                       
                       
                       &nbsp;</td>
-                    <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="articleDetail.jsp?=<%=a.getId() %>>"><%=preStr + a.getTitle() %>></a></td>
+                    <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="articleDetail.jsp?id=<%=a.getId() %>"><%=preStr + a.getTitle() %>></a></td>
                     <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="articleDetail.jsp">bjsxt</a> </span></td>
                     <td class="jive-view-count" width="1%"> 10000</td>
                     <td class="jive-msg-count" width="1%"> 0</td>

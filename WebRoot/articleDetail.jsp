@@ -1,14 +1,16 @@
 <%@page pageEncoding="GBK"%>
 <%@page import ="java.sql.*, java.io.*, com.bjsxt.bbs.*, java.util.*" %>
 <%
+
 String strId = request.getParameter("id");
+System.out.println("ID: "+strId);
 if(strId == null || strId.trim().equals("")){
 	out.println("Error ID");
 	return;
 }
+int id = 0;
 try{
-	int id = Integer.parseInt(strId);
-
+	id = Integer.parseInt(strId);
 }catch(NumberFormatException e){
 	out.println("Error ID again!");
 	return;
@@ -28,12 +30,13 @@ if(rs.next()){
 
 DB.close(rs);
 DB.close(stmt);
-DB.Clode(conn);
+DB.close(conn);
 
-if(a = null){
-	%>
-	您寻找得帖子不存在			
-	<% 
+if(a == null){
+%>
+	您寻找得帖子不存在!
+<% 
+	return;
 }
 
 %>
@@ -64,7 +67,7 @@ if(a = null){
     <tbody>
       <tr valign="top">
         <td width="99%"><p class="jive-breadcrumbs"> <a href="http://bbs.chinajavaworld.com/index.jspa">Ê×Ò³</a> &#187; <a href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorld¼¼ÊõÂÛÌ³|JavaÊÀ½ç_ÖÐÎÄÂÛÌ³</a> &#187; <a href="http://bbs.chinajavaworld.com/category.jspa?categoryID=2">Java 2 Platform, Standard Edition (J2SE)</a> &#187; <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">JavaÓïÑÔ*³õ¼¶°æ</a> </p>
-          <p class="jive-page-title"> 主题 <%  %></p></td>
+          <p class="jive-page-title"> 主题 <%=a.getTitle()%></p></td>
         <td width="1%"><div class="jive-accountbox"></div></td>
       </tr>
     </tbody>
@@ -74,7 +77,7 @@ if(a = null){
       <tbody>
         <tr>
           <td class="jive-icon"><a href="http://bbs.chinajavaworld.com/post%21reply.jspa?threadID=744236"><img src="images/reply-16x16.gif" alt="»Ø¸´±¾Ö÷Ìâ" border="0" height="16" width="16"></a></td>
-          <td class="jive-icon-label"><a id="jive-reply-thread" href="http://bbs.chinajavaworld.com/post%21reply.jspa?threadID=744236">»Ø¸´±¾Ö÷Ìâ</a> </td>
+          <td class="jive-icon-label"><a id="jive-reply-thread" href="replay.jsp?id=<%=a.getId()%>">AAAA</a></td>
         </tr>
       </tbody>
     </table>
@@ -138,7 +141,7 @@ if(a = null){
                               </tr>
                               <tr>
                                 <td colspan="4" style="border-top: 1px solid rgb(204, 204, 204);"><br>
-                                  ÎÒÈÏÎªÀÏÊ¦ËµµÄÊÇ¶Ô¡£¡£¡£ÖÁÓÚÎªÊ²Ã´£¬ÎÒÒ²²»ºÃËµ¡£¡£¡£ <br>
+                                 <%=a.getCont()  %>  <br>
                                   <br>
                                 </td>
                               </tr>

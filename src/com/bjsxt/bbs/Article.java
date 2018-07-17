@@ -67,7 +67,7 @@ public class Article {
 	
 	public void initFromRs(ResultSet rs){
 		 try {
-			setId(rs.getInt("id"));
+		   	 setId(rs.getInt("id"));
 			 setPid(rs.getInt("pid"));
 			 setRootId(rs.getInt("rootid"));
 			 setTitle(rs.getString("title"));
